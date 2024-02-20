@@ -36,13 +36,13 @@ const Cart = () => {
     const price=productList.reduce((acc,productList)=> productList.price*(productList.quantity||1));
   return (
       <>
-          <div className='container-fluid h-10'>
+          <div className='container-fluid h-10 sticky-top'>
               
               <ul>
-                  <li><h2>Cart</h2></li>
+                  <li><h2 className=''>Cart</h2></li>
                 <li className='qty'><b>Total Qty:</b> {totalQty}</li>
                   <li className='price'><b>Total Price:</b> ${totalPrice }</li>
-                <li><button className='btn btn-primary'>Proceed to Pay</button></li>
+                <li><button className='btn btn-primary'><span className='d-none d-lg-block'>Proceed to Pay</span><span className='d-block d-lg-none'>Pay</span></button></li>
               </ul>
           </div>
           <div className='container mt-5'>
@@ -80,7 +80,7 @@ const Cart = () => {
                                       <h5>${item.price}</h5>
                                 <button className='btn btn-secondary me-2' onClick={() => handleReduce(item.id, item.quantity || 1)}>-</button>{item.quantity || 1}
                                       <button className='btn btn-secondary ms-2' onClick={() => handleAdd(item.id, item.quantity || 1)}>+</button>
-                                      <div className='text-end mt-5'>
+                                      <div className='d-flex justify-content-end mt-5'>
                                       <button className='btn remove' onClick={() => handleRemove(item.id)}>REMOVE</button>
                                       </div>
 
@@ -93,7 +93,8 @@ const Cart = () => {
                               <div className='d-flex justify-content-between'>
                                   <h6>Discount: </h6><h6>{ item.discountPercentage} %</h6></div>
                               <div className='d-flex justify-content-between'>
-                                  <h3>Total :</h3><h3> ${item.price * (item.quantity || 1)}.00</h3>
+                                  <h6 className='d-block d-sm-none'>Total :</h6><h6 className='d-block d-sm-none'> ${item.price * (item.quantity || 1)}.00</h6>
+                                  <h3 className='d-none d-sm-block'>Total :</h3><h3 className='d-none d-sm-block'> ${item.price * (item.quantity || 1)}.00</h3>
                               </div>
                         
 
