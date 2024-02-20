@@ -19,7 +19,7 @@ const Cart = () => {
         setProductList (preData => {
             return preData.map((item) =>{
             if (item.id === id && item.quantity>0 || quantity>0) {
-                // return {...item, quantity: (item.quantity-1|| quantity-1)}
+                
                  return { ...item, quantity: Math.max(0, item.quantity - 1 || quantity - 1) };
 
                 }
