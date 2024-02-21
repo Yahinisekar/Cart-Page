@@ -18,7 +18,7 @@ const Cart = () => {
     const handleReduce = (id,quantity) => {
         setProductList (preData => {
             return preData.map((item) =>{
-            if (item.id === id && item.quantity>0 || quantity>0) {
+            if (item.id === id) {
                 
                  return { ...item, quantity: Math.max(0, item.quantity - 1 || quantity - 1) };
 
@@ -47,9 +47,9 @@ const Cart = () => {
           </div>
           <div className='container mt-5'>
                 
-              {productList.map((item, index) => 
+              {productList.map((item) => 
                   
-                  <div className="card p-5 mb-5 " key={index}>
+                  <div className="card p-5 mb-5 " key={item.id}>
                       {/* {item.images.map((img, index) => 
                       <div key={index}>
                           <img src={img} className="card-img-top" alt="..." />
